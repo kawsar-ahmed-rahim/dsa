@@ -1,3 +1,4 @@
+//! linked_list:creating single node
 #include<stdio.h>
 #include<stdlib.h>
 struct Node {
@@ -19,9 +20,11 @@ int main(){
     head->next = NULL;
 
     printf("Data: %d\n", head->data);
-    printf("address: %d\n", head->next);
+    printf("address: %p\n", (void*)head->next);
     free(head);
 }
+
+//! linked_list:creating multiple nodes
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -31,7 +34,10 @@ struct Node {
 };
 
 int main() {
-    struct Node *head , *second, *third;
+    struct Node *head = NULL;
+    struct Node *second = NULL;
+    struct Node *third = NULL;
+    
     head = (struct Node*)malloc(sizeof(struct Node));
     second = (struct Node*)malloc(sizeof(struct Node));
     third = (struct Node*)malloc(sizeof(struct Node));
@@ -55,9 +61,11 @@ int main() {
     free(head);
     free(second);
     free(third);
+    return 0;
 
 };
 
+//! linked_list:creating multiple nodes using loop
 #include<stdio.h>
 #include<stdlib.h>
 struct Node {
@@ -66,16 +74,14 @@ struct Node {
 };
 
 int main(){
-    struct Node *head = NULL;
-
-    struct Node *head, *temp, *newNode;
+    struct Node *head = NULL, *temp = NULL, *newNode;     
     int i,value;
-    for(i=0; i<=5; i++){
+    for(i=0; i<5; i++){
         newNode = (struct Node*)malloc(sizeof(struct Node));
 
-        if(head==NULL){
+        if(newNode==NULL){
             printf("Memory not available\n");
-        return 1;
+            return 1;
         }
         printf("%d",i+1);
         scanf("%d",&value);
@@ -85,6 +91,8 @@ int main(){
 
         if(head==NULL){
             head=newNode;
+            temp = newNode;
+
 
         } else {
             temp->next=newNode;
@@ -94,7 +102,7 @@ int main(){
 
     };
 
-    struct Node *temp = head;
+    temp = head;
     while(temp!=NULL){
         printf("%d ", temp->data);
         temp = temp->next;
@@ -102,10 +110,11 @@ int main(){
     }
 
     struct Node *del = head;
-    while(del!=NULL){
-        del=del->next;
-        free(del);
-    }
+    while(del != NULL){
+    struct Node *next = del->next;
+    free(del);
+    del = next;
+}
 
 
 }
