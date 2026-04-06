@@ -74,7 +74,7 @@ struct Node {
 };
 
 int main(){
-    struct Node *head = NULL, *temp = NULL, *newNode;     
+    struct Node *head = NULL, *temp = NULL, *newNode=NULL, *del=NULL;     
     int i,value;
     for(i=0; i<5; i++){
         newNode = (struct Node*)malloc(sizeof(struct Node));
@@ -92,14 +92,10 @@ int main(){
         if(head==NULL){
             head=newNode;
             temp = newNode;
-
-
         } else {
             temp->next=newNode;
             temp=newNode;
-
         }
-
     };
 
     temp = head;
@@ -109,12 +105,44 @@ int main(){
 
     }
 
-    struct Node *del = head;
+    // struct Node *del = head;
+    del = head;
     while(del != NULL){
-    struct Node *next = del->next;
+    //struct Node *next = del->next;
+    del = del->next;
     free(del);
-    del = next;
-}
-
 
 }
+}
+
+// function: add node at starting
+
+void insertBeginning(struct Node *head, int value){
+        struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+        insertBeginning(&head,100){
+            newNode->data = value;
+            newNode->next = *head;
+            head = newNode;
+
+        }
+
+}
+// add node at last
+void insertEnd(struct Node head, int value){
+    struct Node *newNode = ()
+    newNode->data=value;
+    newNode->next=NULL;
+
+    struct Node *temp = head;
+    while(temp->next=NuLl){
+        temp = temp->next;
+    }
+    temp->next = newNode;
+
+}
+// 1.create 100 node
+// 2.delete-3 positions
+// 3.insert-3 positions
+// 4.searching
+// 5.double
+
