@@ -1,4 +1,4 @@
-//! singly linked list: create multiple nodes using loop
+//! singly linked list: create multiple nodes (using loop)
 #include<stdio.h>
 #include<stdlib.h>
 
