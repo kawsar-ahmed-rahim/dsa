@@ -9,7 +9,7 @@ struct Node{
 
 void insertBeginning(struct Node **head, int value){
 
-    struct Node *newNode = malloc(sizeof(*newNode));
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
 
     newNode->data = value;
     newNode->prev = NULL;
@@ -30,7 +30,16 @@ void display(struct Node *head){
 
     printf("NULL\n");
 }
+void freeList(struct Node **head){
 
+    struct Node *temp;
+
+    while(*head != NULL){
+        temp = *head;
+        *head = (*head)->next;
+        free(temp);
+    }
+}
 int main(){
 
     struct Node *head = NULL;
@@ -40,6 +49,9 @@ int main(){
     insertBeginning(&head, 30);
 
     display(head);
+
+    freeList(&head);
+
 
     return 0;
 }

@@ -10,7 +10,7 @@ struct Node{
 
 void insertAtPosition(struct Node **head, int value, int position){
 
-    struct Node *newNode = malloc(sizeof(*newNode));
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = value;
 
     if(position == 1){

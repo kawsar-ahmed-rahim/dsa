@@ -9,7 +9,8 @@ struct Node{
 
 void insertEnd(struct Node **head, int value){
 
-    struct Node *newNode = malloc(sizeof(*newNode));
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+    
     newNode->data = value;
     newNode->next = NULL;
 
@@ -37,7 +38,16 @@ void display(struct Node *head){
 
     printf("NULL\n");
 }
+void freeList(struct Node **head){
 
+    struct Node *temp;
+
+    while(*head != NULL){
+        temp = *head;
+        *head = (*head)->next;
+        free(temp);
+    }
+}
 int main(){
 
     struct Node *head = NULL;
@@ -47,6 +57,8 @@ int main(){
     insertEnd(&head, 30);
 
     display(head);
+
+    freeList(&head);
 
     return 0;
 }
